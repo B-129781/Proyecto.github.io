@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Red -B-12 Proyecto Final </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .diagrama {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .diagrama h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+        
+        .red-visual {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dispositivo {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .dispositivo-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .switch-central {
+            background: #667eea;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .calculadora {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .calculadora h2 {
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        label {
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .resultados {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .resultados h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .resultado-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .resultado-item h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .resultado-item p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .valor-destacado {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .alerta {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        
+        .exito {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 Calculadora de Red</h1>
+        <p class="subtitle">Proyecto Final - Infraestructura de Red</p>
+        
+        <!-- Diagrama Visual -->
+        <div class="diagrama">
+            <h2>📊 Diagrama de Red</h2>
+            <div class="red-visual">
+                <div class="dispositivo">
+                    <div class="dispositivo-icon">💻</div>
+                    <div>PCs</div>
+                </div>
+                <div class="dispositivo">
+                    <div class="dispositivo-icon">🖥️</div>
+                    <div>Laptops</div>
+                </div>
+                <div class="switch-central">
+                    🔌 SWITCH<br>CENTRAL
+                </div>
+                <div class="dispositivo">
+                    <div class="dispositivo-icon">📱</div>
+                    <div>Tablets/Móviles</div>
+                </div>
+                <div class="dispositivo">
+                    <div class="dispositivo-icon">🖨️</div>
+                    <div>Impresoras</div>
+                </div>
+                <div class="dispositivo">
+                    <div class="dispositivo-icon">🗄️</div>
+                    <div>Servidores</div>
+                </div>
+            </div>
+            <p style="margin-top: 20px; color: #666;">Todos los dispositivos se conectan al switch central mediante cableado estructurado</p>
+        </div>
+        
+        <!-- Calculadora -->
+        <div class="calculadora">
+            <h2>🧮 Ingresa los Datos de tu Red</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>💻 PCs de escritorio:</label>
+                    <input type="number" id="pcs" value="30" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>🖥️ Laptops:</label>
+                    <input type="number" id="laptops" value="20" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>📱 Tablets y móviles:</label>
+                    <input type="number" id="tablets" value="26" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>🖨️ Impresoras:</label>
+                    <input type="number" id="impresoras" value="6" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>🗄️ Servidores:</label>
+                    <input type="number" id="servidores" value="4" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>🔌 Puertos por switch:</label>
+                    <input type="number" id="puertos" value="24" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label>📏 Metros de cable total:</label>
+                    <input type="number" id="metros" value="500" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label>💰 Presupuesto (MXN):</label>
+                    <input type="number" id="presupuesto" value="50000" min="0">
+                </div>
+            </div>
+            
+            <button class="btn" onclick="calcular()">🚀 Calcular Infraestructura</button>
+        </div>
+        
+        <!-- Resultados -->
+        <div class="resultados" id="resultados">
+            <h2>📋 Resultados del Cálculo</h2>
+            <div id="contenido-resultados"></div>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            // Obtener valores
+            const pcs = parseInt(document.getElementById('pcs').value) || 0;
+            const laptops = parseInt(document.getElementById('laptops').value) || 0;
+            const tablets = parseInt(document.getElementById('tablets').value) || 0;
+            const impresoras = parseInt(document.getElementById('impresoras').value) || 0;
+            const servidores = parseInt(document.getElementById('servidores').value) || 0;
+            const puertosPorSwitch = parseInt(document.getElementById('puertos').value) || 24;
+            const metros = parseInt(document.getElementById('metros').value) || 0;
+            const presupuesto = parseInt(document.getElementById('presupuesto').value) || 0;
+            
+            // 1) Calcular dispositivos totales
+            const totalDispositivos = pcs + laptops + tablets + impresoras + servidores;
+            
+            // 2) Calcular switches necesarios
+            const switchesNecesarios = Math.ceil(totalDispositivos / puertosPorSwitch);
+            const puertosDisponibles = switchesNecesarios * puertosPorSwitch;
+            const puertosLibres = puertosDisponibles - totalDispositivos;
+            
+            // 3) Calcular ancho de banda
+            const anchoPCs = pcs * 8;
+            const anchoLaptops = laptops * 5;
+            const anchoTablets = tablets * 2;
+            const anchoImpresoras = impresoras * 0.5;
+            const anchoServidores = servidores * 20;
+            
+            const anchoBase = anchoPCs + anchoLaptops + anchoTablets + anchoImpresoras + anchoServidores;
+            const anchoTotal = anchoBase * 1.3;
+            
+            // 4) Verificar longitud de cables
+            const metrosConMargen = metros * 1.15; // +15% de margen
+            const segmentosLargos = metros > 100;
+            
+            // 5) Calcular presupuesto estimado
+            const costoSwitch = 3500; // precio estimado por switch
+            const costoCablePorMetro = 15; // precio por metro
+            const costoRack = 5000;
+            const costoUPS = 4000;
+            const costoAccesorios = 3000;
+            
+            const costoSwitches = switchesNecesarios * costoSwitch;
+            const costoCables = metrosConMargen * costoCablePorMetro;
+            const costoTotal = costoSwitches + costoCables + costoRack + costoUPS + costoAccesorios;
+            
+            const dentroPresupuesto = costoTotal <= presupuesto;
+            const diferencia = presupuesto - costoTotal;
+            
+            // Generar HTML de resultados
+            let html = '';
+            
+            // Resultado 1: Switches
+            html += `
+                <div class="resultado-item">
+                    <h3>🔌 Switches Necesarios</h3>
+                    <div class="valor-destacado">${switchesNecesarios} switches de ${puertosPorSwitch} puertos</div>
+                    <p><strong>Total de dispositivos:</strong> ${totalDispositivos}</p>
+                    <p><strong>Puertos disponibles:</strong> ${puertosDisponibles}</p>
+                    <p><strong>Puertos libres:</strong> ${puertosLibres} (para crecimiento futuro)</p>
+                    <p style="margin-top: 10px; color: #666;">
+                        📊 Cálculo: ${totalDispositivos} dispositivos ÷ ${puertosPorSwitch} puertos = ${(totalDispositivos/puertosPorSwitch).toFixed(2)} 
+                        → se redondea hacia arriba = ${switchesNecesarios} switches
+                    </p>
+                </div>
+            `;
+            
+            // Resultado 2: Cableado
+            html += `
+                <div class="resultado-item">
+                    <h3>📏 Cableado Estructurado</h3>
+                    <div class="valor-destacado">${metrosConMargen.toFixed(0)} metros totales</div>
+                    <p><strong>Metros base:</strong> ${metros} m</p>
+                    <p><strong>Con margen de seguridad (+15%):</strong> ${metrosConMargen.toFixed(0)} m</p>
+                    ${segmentosLargos ? 
+                        '<div class="alerta">⚠️ <strong>Atención:</strong> Si algún tramo supera los 100 metros, considera usar fibra óptica o colocar switches intermedios.</div>' 
+                        : '<div class="alerta exito">✅ Todos los segmentos están dentro del límite de 100m para cable UTP.</div>'}
+                </div>
+            `;
+            
+            // Resultado 3: Ancho de banda
+            html += `
+                <div class="resultado-item">
+                    <h3>📡 Ancho de Banda Requerido</h3>
+                    <div class="valor-destacado">${anchoTotal.toFixed(1)} Mbps</div>
+                    <p><strong>Desglose por dispositivo:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>PCs (${pcs} × 8 Mbps) = ${anchoPCs} Mbps</li>
+                        <li>Laptops (${laptops} × 5 Mbps) = ${anchoLaptops} Mbps</li>
+                        <li>Tablets/móviles (${tablets} × 2 Mbps) = ${anchoTablets} Mbps</li>
+                        <li>Impresoras (${impresoras} × 0.5 Mbps) = ${anchoImpresoras} Mbps</li>
+                        <li>Servidores (${servidores} × 20 Mbps) = ${anchoServidores} Mbps</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Ancho base:</strong> ${anchoBase.toFixed(1)} Mbps</p>
+                    <p><strong>Con margen del 30%:</strong> ${anchoTotal.toFixed(1)} Mbps</p>
+                    <div class="alerta exito" style="margin-top: 10px;">
+                        💡 <strong>Recomendación:</strong> Contratar un enlace de 1 Gbps (1000 Mbps) para cubrir picos y crecimiento futuro.
+                    </div>
+                </div>
+            `;
+            
+            // Resultado 4: Presupuesto
+            html += `
+                <div class="resultado-item">
+                    <h3>💰 Análisis de Presupuesto</h3>
+                    <div class="valor-destacado">$${costoTotal.toLocaleString('es-MX')} MXN</div>
+                    <p><strong>Desglose de costos:</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Switches (${switchesNecesarios} × $${costoSwitch.toLocaleString('es-MX')}) = $${costoSwitches.toLocaleString('es-MX')}</li>
+                        <li>Cableado (${metrosConMargen.toFixed(0)} m × $${costoCablePorMetro}) = $${costoCables.toLocaleString('es-MX')}</li>
+                        <li>Rack de piso = $${costoRack.toLocaleString('es-MX')}</li>
+                        <li>UPS = $${costoUPS.toLocaleString('es-MX')}</li>
+                        <li>Accesorios (patch panels, conectores, etc.) = $${costoAccesorios.toLocaleString('es-MX')}</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Presupuesto disponible:</strong> $${presupuesto.toLocaleString('es-MX')} MXN</p>
+                    ${dentroPresupuesto ? 
+                        `<div class="alerta exito">✅ <strong>¡Perfecto!</strong> El costo está dentro del presupuesto. Sobran $${diferencia.toLocaleString('es-MX')} MXN.</div>` 
+                        : `<div class="alerta">⚠️ <strong>Atención:</strong> El costo excede el presupuesto por $${Math.abs(diferencia).toLocaleString('es-MX')} MXN. Considera switches más económicos o comprar por fases.</div>`}
+                </div>
+            `;
+            
+            // Mostrar resultados
+            document.getElementById('contenido-resultados').innerHTML = html;
+            document.getElementById('resultados').style.display = 'block';
+            
+            // Scroll suave a resultados
+            document.getElementById('resultados').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
